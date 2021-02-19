@@ -1,15 +1,15 @@
-import React, { FC } from 'react';
+import { FC } from 'react'
 
-import * as S from './{{ pascalCase name }}.styles';
+import * as S from './{{ pascalCase name }}.styles'
 
 export type {{ pascalCase name }}Props = {
-  label: string;
+  label: string
 }
 
 export const {{ pascalCase name }}: FC<{{ pascalCase name }}Props> = ({ label }) => {
   return (
-    <S.Wrapper className={classes.root}>
+    <S.Wrapper>
       <button>{label}</button>
     </S.Wrapper>
-  );
+  )
 }
