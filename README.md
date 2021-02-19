@@ -16,3 +16,11 @@ public Gists by that user.
 files, the gist should have the respective tags/badges).
 - [ ] Fork: Username/Avatar of the last 3 users who forked it with avatar linking to
 the fork.
+
+## Tradeoffs
+
+- For the fork, it will be the first 3 users since it's not possible to sort by date. (The other option was to run through entire fork pagination to get the last 3 users). In order to make this project fast, it will be added a deep investigation as TODO
+
+## TODO
+
+- [ ] Investigate fork list sorting

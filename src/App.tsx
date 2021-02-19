@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+import { GistAPI } from './api/GistAPI'
+
 function App() {
+  useEffect(() => {
+    new GistAPI().searchByUser('kobajs').then((res) => console.log(res))
+  }, [])
   return (
     <div className="App">
       <header className="App-header">
