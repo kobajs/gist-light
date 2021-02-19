@@ -5,7 +5,7 @@ import { Gist } from '../../api/GistAPI.types'
 type SearchGistsContextValues = {
   list: Gist[]
   page: number
-  setPage: (page: number) => void
+  incrementPage: () => void
   search: string
   setSearch: (search: string) => void
   doSearch: () => void
@@ -14,7 +14,7 @@ type SearchGistsContextValues = {
 const SearchGistsContext = createContext<SearchGistsContextValues>({
   list: [],
   page: 0,
-  setPage: () => null,
+  incrementPage: () => null,
   search: '',
   setSearch: () => null,
   doSearch: () => null,
@@ -41,7 +41,7 @@ export const SearchGistsProvider: FC = ({ children }) => {
   const contextValues = {
     list,
     page,
-    setPage,
+    incrementPage: () => setPage(page + 1),
     search,
     setSearch,
     doSearch,

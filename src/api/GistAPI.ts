@@ -7,6 +7,14 @@ const octokit = new Octokit()
 export class GistAPI {
   private async listForUser(username: string) {
     try {
+      // const userGistsResponse = await octokit.paginate(
+      //   octokit.gists.listForUser,
+      //   {
+      //     username,
+      //   }
+      // )
+      // return userGistsResponse
+
       const userGistsResponse = await octokit.gists.listForUser({
         username,
       })
