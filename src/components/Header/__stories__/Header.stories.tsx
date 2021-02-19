@@ -1,13 +1,9 @@
-import { Header, HeaderProps } from '../Header'
+import { Header } from '../Header'
 import { Story } from '@storybook/react/types-6-0'
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />
+const Template: Story = (args) => <Header {...args} />
 
 export const Primary = Template.bind({})
-
-Primary.args = {
-  label: 'Test Label',
-}
 
 const HeaderStory = {
   title: 'Components/Header',

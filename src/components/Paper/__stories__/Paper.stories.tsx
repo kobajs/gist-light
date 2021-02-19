@@ -1,13 +1,11 @@
-import { Paper, PaperProps } from '../Paper'
+import { Paper } from '../Paper'
 import { Story } from '@storybook/react/types-6-0'
 
-const Template: Story<PaperProps> = (args) => <Paper {...args} />
+const Template: Story = (args) => <Paper {...args} />
 
 export const Primary = Template.bind({})
 
-Primary.args = {
-  label: 'Test Label',
-}
+Primary.args = {}
 
 const PaperStory = {
   title: 'Components/Paper',

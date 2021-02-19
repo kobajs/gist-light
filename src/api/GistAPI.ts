@@ -5,8 +5,6 @@ const octokit = new Octokit()
 
 // Gist docs: https://docs.github.com/en/rest/reference/gists
 export class GistAPI {
-  baseURL = 'https://api.github.com'
-
   private async listForUser(username: string) {
     try {
       const userGistsResponse = await octokit.gists.listForUser({

@@ -1,13 +1,11 @@
-import { Tag, TagProps } from '../Tag'
+import { Tag } from '../Tag'
 import { Story } from '@storybook/react/types-6-0'
 
-const Template: Story<TagProps> = (args) => <Tag {...args} />
+const Template: Story = (args) => <Tag {...args} />
 
 export const Primary = Template.bind({})
 
-Primary.args = {
-  label: 'Test Label',
-}
+Primary.args = {}
 
 const TagStory = {
   title: 'Components/Tag',

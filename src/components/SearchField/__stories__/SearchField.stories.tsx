@@ -1,13 +1,11 @@
-import { SearchField, SearchFieldProps } from '../SearchField'
+import { SearchField } from '../SearchField'
 import { Story } from '@storybook/react/types-6-0'
 
-const Template: Story<SearchFieldProps> = (args) => <SearchField {...args} />
+const Template: Story = (args) => <SearchField {...args} />
 
 export const Primary = Template.bind({})
 
-Primary.args = {
-  label: 'Test Label',
-}
+Primary.args = {}
 
 const SearchFieldStory = {
   title: 'Components/SearchField',

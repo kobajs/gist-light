@@ -1,15 +1,17 @@
 import { FC } from 'react'
+import { SearchField } from '../../components'
 
 import * as S from './Gists.styles'
+import { GistsList } from './GistsList'
+import { SearchGistsProvider } from './SearchGistsContext'
 
-export type GistsProps = {
-  label: string
-}
-
-export const Gists: FC<GistsProps> = ({ label }) => {
+export const Gists: FC = () => {
   return (
-    <S.Wrapper>
-      <button>{label}</button>
-    </S.Wrapper>
+    <SearchGistsProvider>
+      <S.Wrapper>
+        <SearchField />
+        <GistsList />
+      </S.Wrapper>
+    </SearchGistsProvider>
   )
 }

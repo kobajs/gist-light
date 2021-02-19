@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.header`
-  color: lightgrey;
+  display: flex;
+  justify-content: center;
+`
+
+export const Img = styled.img`
+  width: 200px;
 `

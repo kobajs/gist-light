@@ -1,10 +1,11 @@
-import { Header, Layout, SearchField } from './components'
+import { Header, Layout } from './components'
+import { Gists } from './features/Gists'
 
 function App() {
   return (
     <Layout>
       <Header />
-      <SearchField />
+      <Gists />
     </Layout>
   )
 }
