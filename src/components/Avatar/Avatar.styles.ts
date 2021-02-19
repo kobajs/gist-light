@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
 export const Link = styled.a`
-  color: lightgrey;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
 `

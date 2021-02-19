@@ -1,7 +1,7 @@
 import { Tag } from '../Tag'
 import { Story } from '@storybook/react/types-6-0'
 
-const Template: Story = (args) => <Tag {...args} />
+const Template: Story = (args) => <Tag {...args}>Markdown</Tag>
 
 export const Primary = Template.bind({})
 
