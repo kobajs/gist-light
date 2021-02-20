@@ -7,6 +7,9 @@ export const Card = styled(Paper)`
 
 export const H1 = styled.h1`
   font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const ForksWrapper = styled.div`

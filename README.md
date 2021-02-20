@@ -1,5 +1,14 @@
 # Gist Light
 
+## IMPORTANT
+
+Since it's using octokit.paginate (it gets the full list), it is very easy to reach the Git API Rate Limit (One of TODO's is use pagination), so what you can do to test with more cases is generate a Github Personal Token (with Gist access added) and add it to `.env` like this:
+
+```
+// .env
+REACT_APP_GIT_TOKEN=your-token
+```
+
 ## Requirements
 
 Node v12+
@@ -60,13 +69,16 @@ the fork.
 
 ## Tradeoffs
 
-- For the fork, it will be the first 3 users since it's not possible to sort by date. (The other option was to run through entire fork pagination to get the last 3 users). In order to make this project fast, it will be added a deep investigation as TODO
+- For the fork, it will be the first 3 users since it's not possible to sort by date. (The other option was to run through entire fork pagination to get the last 3 users). In order to make this project fast, it will be added a deep investigation as TODO.
+- Changed pagination to non-pagination because of time.
 
 ## TODO
 
 - [ ] Investigate fork list sorting
+- [ ] Create entity for Forks and Gists to help with mapping
+- [ ] Gist Pagination
 - [ ] Glance styles
 - [ ] Theming
 - [ ] Combine GistsContext with Reducer hook
-- [ ] Not all components have stories or tests because of time.
+- [ ] Not all components have stories or tests because of time
 - [ ] More tests

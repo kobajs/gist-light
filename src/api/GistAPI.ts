@@ -2,8 +2,18 @@ import { Gist } from './GistAPI.types'
 
 import { Octokit } from '@octokit/rest'
 
+const gitToken = process.env.REACT_APP_GIT_TOKEN
+
 // Gist docs: https://docs.github.com/en/rest/reference/gists
 export class GistAPI {
+  headers = {
+    ...(gitToken
+      ? {
+          authorization: `token ${gitToken}`,
+        }
+      : {}),
+  }
+
   async listForUser(username: string) {
     try {
       const octokit = new Octokit()
@@ -11,6 +21,7 @@ export class GistAPI {
         octokit.gists.listForUser,
         {
           username,
+          headers: this.headers,
         }
       )
       return userGistsResponse
@@ -25,6 +36,7 @@ export class GistAPI {
       const octokit = new Octokit()
       const forksResponse = await octokit.gists.listForks({
         gist_id,
+        headers: this.headers,
       })
 
       return forksResponse.data
@@ -48,14 +60,17 @@ export class GistAPI {
             comments: ug.comments,
             description: ug.description,
             url: ug.html_url,
-            forks: forks.map((fork) => ({
+            forks: forks.slice(0, 3).map((fork) => ({
               avatar: fork.owner?.avatar_url || '',
               username: fork.owner?.login || '',
               url: fork.html_url || '',
             })),
             tags: Object.values(ug.files).reduce<string[]>(
               (prev, { language }) => {
-                if (typeof language === 'string')
+                if (
+                  typeof language === 'string' &&
+                  prev.findIndex((v) => v === language) === -1
+                )
                   return [...prev, language as string]
                 return prev
               },
