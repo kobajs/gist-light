@@ -10,8 +10,8 @@ export type AvatarProps = {
 
 export const Avatar: FC<AvatarProps> = ({ name, url, img }) => {
   return (
-    <S.Link href={url}>
-      <img src={img} alt={name} />
+    <S.Link href={url} target="_blank" rel="noopener noreferrer">
+      <S.Img src={img} alt={name} />
     </S.Link>
   )
 }

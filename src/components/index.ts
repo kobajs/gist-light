@@ -1,3 +1,7 @@
+export * from './Avatar'
 export * from './Header'
 export * from './Layout'
+export * from './Loading'
+export * from './Paper'
 export * from './SearchField'
+export * from './Tag'

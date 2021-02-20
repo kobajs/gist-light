@@ -1,11 +1,14 @@
 import { Header, Layout } from './components'
 import { Gists } from './features/Gists'
+import { SearchGistsProvider } from './features/Gists/SearchGistsContext'
 
 function App() {
   return (
     <Layout>
       <Header />
-      <Gists />
+      <SearchGistsProvider>
+        <Gists />
+      </SearchGistsProvider>
     </Layout>
   )
 }

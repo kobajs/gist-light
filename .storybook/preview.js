@@ -1,13 +1,14 @@
 import { Normalize } from 'styled-normalize'
+import { Layout } from '../src/components/Layout'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
 }
 export const decorators = [
   (Story) => (
-    <div style={{ margin: '3em' }}>
+    <Layout>
       <Normalize />
       <Story />
-    </div>
+    </Layout>
   ),
 ]

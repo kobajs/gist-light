@@ -6,4 +6,9 @@ export const Link = styled.a`
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  margin: 0 6px;
+`
+
+export const Img = styled.img`
+  width: 100%;
 `

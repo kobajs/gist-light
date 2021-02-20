@@ -3,18 +3,18 @@ import { GistAPI } from '../../api/GistAPI'
 import { Gist } from '../../api/GistAPI.types'
 
 type SearchGistsContextValues = {
+  isLoading: boolean
+  error: string
   list: Gist[]
-  page: number
-  incrementPage: () => void
   search: string
   setSearch: (search: string) => void
   doSearch: () => void
 }
 
 const SearchGistsContext = createContext<SearchGistsContextValues>({
+  isLoading: false,
+  error: '',
   list: [],
-  page: 0,
-  incrementPage: () => null,
   search: '',
   setSearch: () => null,
   doSearch: () => null,
@@ -23,32 +23,30 @@ const SearchGistsContext = createContext<SearchGistsContextValues>({
 export const useSearchGistsContext = () => useContext(SearchGistsContext)
 
 export const SearchGistsProvider: FC = ({ children }) => {
-  const per_page = 10
-  const [page, setPage] = useState(0)
   const [search, setSearch] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
   const [list, setList] = useState<Gist[]>([])
 
   const doSearch = useCallback(async () => {
+    setIsLoading(true)
+    setError('')
+    setList([])
+
     try {
-      const gists = await new GistAPI().searchByUser(search, { page, per_page })
+      const gists = await new GistAPI().searchByUser(search)
       setList(gists)
     } catch (e) {
-      console.log(e)
-      throw e
+      setError(e.message)
+    } finally {
+      setIsLoading(false)
     }
-  }, [search, page])
-
-  const contextValues = {
-    list,
-    page,
-    incrementPage: () => setPage(page + 1),
-    search,
-    setSearch,
-    doSearch,
-  }
+  }, [search])
 
   return (
-    <SearchGistsContext.Provider value={contextValues}>
+    <SearchGistsContext.Provider
+      value={{ isLoading, error, list, search, setSearch, doSearch }}
+    >
       {children}
     </SearchGistsContext.Provider>
   )

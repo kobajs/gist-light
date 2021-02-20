@@ -1,33 +1,28 @@
-import { SearchParams, Gist } from './GistAPI.types'
+import { Gist } from './GistAPI.types'
 
 import { Octokit } from '@octokit/rest'
-const octokit = new Octokit()
 
 // Gist docs: https://docs.github.com/en/rest/reference/gists
 export class GistAPI {
-  private async listForUser(username: string) {
+  async listForUser(username: string) {
     try {
-      // const userGistsResponse = await octokit.paginate(
-      //   octokit.gists.listForUser,
-      //   {
-      //     username,
-      //   }
-      // )
-      // return userGistsResponse
-
-      const userGistsResponse = await octokit.gists.listForUser({
-        username,
-      })
-
-      return userGistsResponse.data
+      const octokit = new Octokit()
+      const userGistsResponse = await octokit.paginate(
+        octokit.gists.listForUser,
+        {
+          username,
+        }
+      )
+      return userGistsResponse
     } catch (e) {
       console.log(e)
       throw e
     }
   }
 
-  private async listForks(gist_id: string) {
+  async listForks(gist_id: string) {
     try {
+      const octokit = new Octokit()
       const forksResponse = await octokit.gists.listForks({
         gist_id,
       })
@@ -39,7 +34,7 @@ export class GistAPI {
     }
   }
 
-  async searchByUser(username: string, params?: SearchParams): Promise<Gist[]> {
+  async searchByUser(username: string): Promise<Gist[]> {
     try {
       const gists: Gist[] = []
       const userGists = await this.listForUser(username)

@@ -24,3 +24,7 @@ the fork.
 ## TODO
 
 - [ ] Investigate fork list sorting
+- [ ] Not all components have stories or tests because of time.
+- [ ] Geater styles
+- [ ] Theming
+- [ ] Combine GistsContext with Reducer hook

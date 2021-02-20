@@ -1,12 +1,11 @@
-import { GistsList, GistsListProps } from '../GistsList'
+import { GistCard, GistCardProps } from '../GistCard'
 import { Story } from '@storybook/react/types-6-0'
-import { Gist } from '../../../../api/GistAPI.types'
 
-const Template: Story<GistsListProps> = (args) => <GistsList {...args} />
+const Template: Story<GistCardProps> = (args) => <GistCard {...args} />
 
 export const Primary = Template.bind({})
 
-const gist: Gist = {
+Primary.args = {
   id: '1221',
   description: 'Gist Description',
   comments: 2,
@@ -31,17 +30,9 @@ const gist: Gist = {
   ],
 }
 
-const gistBuilder = (id: string): Gist => ({ ...gist, id })
-
-Primary.args = {
-  gists: Array(10)
-    .fill(0)
-    .map((_, index) => gistBuilder(index.toString())),
+const GistCardStory = {
+  title: 'Features/Gists/GistCard',
+  component: GistCard,
 }
 
-const GistsListStory = {
-  title: 'Features/Gists/GistsList',
-  component: GistsList,
-}
-
-export default GistsListStory
+export default GistCardStory

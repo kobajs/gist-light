@@ -11,6 +11,7 @@ export const Header: FC = () => {
         src={GithubLogo}
         alt="Github Logo - anthropomorphized octocat with five octopus-like arms"
       />
+      <S.H1>Gists</S.H1>
     </S.Wrapper>
   )
 }

@@ -1,8 +1,3 @@
-export type SearchParams = {
-  page: number
-  per_page?: number
-}
-
 export type Fork = {
   username: string
   avatar: string

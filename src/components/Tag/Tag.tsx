@@ -7,4 +7,5 @@ export const Tag = styled.span`
   padding: 8px;
   background-color: #333;
   border-radius: 16px;
+  margin: 8px 8px 0 0;
 `
